@@ -1,42 +1,36 @@
-//binary search for a sorted array(ascending/descending
-
-public class Main {
+import java.util.*;
+class Main {
 	public static void main(String[] args) {
-		int[] arr1 = {1,3,4,5,6};
-		int[] arr2 = {62,44,33,2,1};
-		int target1 = 1;
-		int target2 = 62;
-		int ans = binarySearch(arr1,target1);
-		int ans2 = binarySearch(arr2,target2);
-		System.out.println(ans);
-		System.out.println(ans2);
+		System.out.print("Enter size : ");
+		Scanner in = new Scanner(System.in);
+		int size = in.nextInt();
+		int[] arr = new int[size];
+		for(int i=0;i<arr.length;i++){
+			System.out.printf("Enter value at index %d : ",i);
+			arr[i] = in.nextInt();
+		}
+		System.out.print("Enter a element to search : ");
+		int target = in.nextInt();
+		int ans = binarySearch(arr,target);
+		if(ans == -1){
+			System.out.print("element not found");
+			return;
+		}
+		System.out.printf("%d is found at %d in O(log n) time",target,ans);
 	}
-
 	static int binarySearch(int[] arr,int target){
 		int l = 0;
-		int r = arr.length - 1;
+		int r = arr.length-1;
 		int mid;
-		while(l < r){
-			mid = (l + r) / 2;
-			if(target == arr[mid]){
+		while(l <= r){
+			mid = (l + r)/2;
+			if(target > arr[mid]){
+				l = mid + 1;
+			} else if(target < arr[mid]) {
+				r = mid - 1;
+			} else {
 				return mid;
-			} else if(arr[l] == target){
-				return l;
-			} else if(arr[r] == target){
-				return r;
-			} else if(arr[l] < arr[r]){
-				if(target < arr[mid]){
-					r = mid;
-				} else{
-						l = mid + 1;
-				}		
-			}else {
-				if(target > arr[mid]){
-					r = mid;
-				} else{
-						l = mid + 1;
-				}		
-			}		
+			}
 		}
 		return -1;
 	}
