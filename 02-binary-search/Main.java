@@ -1,35 +1,42 @@
-import java.util.*;
+//binary search for a sorted array(ascending/descending
+
 public class Main {
 	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		int target1 = 7;
-		int target2 = 99;
-		int[] arr1 = {-88,1,2,3,7,12,17,99};
-		int[] arr2 = {99,77,65,12,-12};
-		System.out.println(binarySearch(arr1,target1));
-		System.out.println(binarySearch(arr2,target2));
+		int[] arr1 = {1,3,4,5,6};
+		int[] arr2 = {62,44,33,2,1};
+		int target1 = 1;
+		int target2 = 62;
+		int ans = binarySearch(arr1,target1);
+		int ans2 = binarySearch(arr2,target2);
+		System.out.println(ans);
+		System.out.println(ans2);
 	}
-	static int binarySearch(int[] arr,int target) {
+
+	static int binarySearch(int[] arr,int target){
 		int l = 0;
 		int r = arr.length - 1;
-		while(l<=r){
-			int mid = (l+r)/2;
-			if(arr[mid] == target){
-				return mid + 1;
-			}
-			if(arr[l] < arr[r]){
-				if(arr[mid] < target){
-					l = mid + 1;
-				}else{
-					r = mid - 1;
-				}
-			}else{
-				if(arr[mid] > target){
-					l = mid + 1;
-				}else{
-					r = mid - 1;
-				}
-			}
+		int mid;
+		while(l < r){
+			mid = (l + r) / 2;
+			if(target == arr[mid]){
+				return mid;
+			} else if(arr[l] == target){
+				return l;
+			} else if(arr[r] == target){
+				return r;
+			} else if(arr[l] < arr[r]){
+				if(target < arr[mid]){
+					r = mid;
+				} else{
+						l = mid + 1;
+				}		
+			}else {
+				if(target > arr[mid]){
+					r = mid;
+				} else{
+						l = mid + 1;
+				}		
+			}		
 		}
 		return -1;
 	}
