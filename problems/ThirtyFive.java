@@ -4,7 +4,7 @@
 
 //leetcode 35
 
-public class Insert {
+public class ThirtyFive {
 	public static void main(String[] args) {
 		int arr1[] = {1,2,33,66};
 		int target = 4;
