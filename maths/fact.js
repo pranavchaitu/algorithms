@@ -18,4 +18,5 @@ function fact2(n) {
 	return fact;
 }
 
+
 console.log(fact2(4));
