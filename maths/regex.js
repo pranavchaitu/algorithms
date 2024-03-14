@@ -1,10 +1,10 @@
 const isAlpha = (str) => {
-	const regex = /^[a-zA-Z]+$/;
+	const regex = /^[a-zA-Z0-9]+$/;
 	return regex.test(str);
 }
 
 const isPalindrome = (s) => {
-	const str = s.split('').filter(i => isAlpha(i)).join('').toLowerCase();
+	const str = s.toLowerCase().split('').filter(i => isAlpha(i));
 	let i = 0;
 	let j = str.length - 1;
 	while(i < j){
@@ -14,8 +14,7 @@ const isPalindrome = (s) => {
 		i++;
 		j--;
 	}
-	if(str.length == 1){
-		return false;
-	}
 	return true;
 }
+
+console.log(isPalindrome("prnav   Vanr,p")) //to be true
