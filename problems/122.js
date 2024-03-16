@@ -7,12 +7,11 @@ var maxProfit = function (prices) {
   let l = 0;
   let r = 1;
   while (r < prices.length) {
+		let diff = prices[r] - prices[l];
     if (prices[l] < prices[r]) {
-      profit += prices[r] - prices[l];
-      l = r;
-    } else {
-      l = r;
+      profit += diff;
     }
+		l=r;
     r++;
   }
   return profit;
