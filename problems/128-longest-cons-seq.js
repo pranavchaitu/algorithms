@@ -11,7 +11,7 @@ var longestConsecutive = function (nums) {
 			continue;
 		}
 		let [currentNum, score] = [num, 1]
-		// const isStreak = () => ;
+		// const isStreak = () => numSet.has(currentNum + 1);
 		while(numSet.has(currentNum + 1)){
 			currentNum++;
 			score++;
