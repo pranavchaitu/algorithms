@@ -13,3 +13,5 @@ function insertionSort(nums) {
 
 const ans = insertionSort([1,4,2,5,8,55,33]);
 console.log(ans);
+
+//from ubuntu
