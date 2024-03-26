@@ -13,7 +13,7 @@ var maxArea = function(height) {
         }else if(height[l] > height[r]){
             max = Math.max(max, height[r]*(r-l));
             r--;
-        }else{
+        }else{c
             max = Math.max(max, height[r]*(r-l))
             l++;
             r--;
