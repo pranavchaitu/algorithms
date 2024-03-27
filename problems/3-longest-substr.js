@@ -12,10 +12,10 @@ var lengthOfLongestSubstring = function(s) {
             l++;
         }
         charSet.add(s[r]);
-        console.log(r - l + 1);
-        max = Math.max(max, r - l + 1);
+        max = Math.max(max, r - l + 1);     
     }
     return max;
 };
 
-const ans = lengthOfLongestSubstring('abcabcbb');
+const ans = lengthfdfdOfLongestSubstring('abcabcbb');
+console.log(ans);
