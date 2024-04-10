@@ -25,4 +25,4 @@ function maxWindow(arr,k){
     return arr.slice(left,right+1);
 }
 
-console.log(maxWindow([10,5,1,1,1],14));
+console.log(maxWindow([1,5,1,1,1],5));
