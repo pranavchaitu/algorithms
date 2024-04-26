@@ -4,21 +4,17 @@
  */
 var thirdMax = function(nums) {
     nums.sort((a,b) => b-a);
-    // if(nums.length < 3){
-    //     return nums[nums.length-1]
-    // }
-    // console.log(nums);
-    let max = 3;
-    for(let i=nums.length;i>=0;i--){
-        if(max == 0 && nums[i-1] != nums[i]){
-            return nums[i]
-        }
-        while(nums[i] == nums[i-1]){
-            i--;
-        }
-        max--;  
+
+    let map = {}
+    for(var i of nums){
+        map[i] = 1;
     }
+    const arr = Object.keys(map)
+    if(arr.length < 3){
+        return arr[arr.length-1]
+    }
+    return arr[arr.length-3]
 };
 
-const ans = thirdMax([2,1,5,5,11])
+const ans = thirdMax([2,1])
 console.log(ans);
