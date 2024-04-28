@@ -47,27 +47,43 @@ class SinglyLinkedList<A>{
         }
         return console.log(current);
     }
+    shift() {
+        if(!this.head) {
+            return console.log(undefined);
+        }
+        var current = this.head
+        this.head = current.next
+        this.length --
+        return console.log(current);
+    }
+    unshift(val : A) {
+        var current = new Node(val)
+        if(!this.head) {
+            this.head = current
+            this.tail = current
+        } else {
+            current.next = this.head
+            this.head = current
+        }
+        this.length ++
+        return console.log(list);
+    }
+    get(index : number){
+        if(index < 0 || index > this.length) return console.log(null);
+        var current = this.head
+        var i = 0;
+        while(i !== index) {
+            current = current!.next
+            i++
+        }
+        return console.log(current);
+    }
 }
 
 const list = new SinglyLinkedList();
-
-console.log(`push here------------------------------------------------------`);
-list.push(true)
-list.push(6)
-list.push("chaitu")
-list.push(7)
-list.push("pranav")
-console.log(`push done------------------------------------------------------`);
-
-console.log(`pop here------------------------------------------------------`);
-list.pop()
-list.pop()
-list.pop()
-list.pop()
-list.pop()
-list.pop()
-console.log(`pop done------------------------------------------------------`);
-
-console.log(`------------------------------------------------------`);
-console.log(list);
-console.log(`------------------------------------------------------`);
+list.push(1)
+list.push(4)
+list.push(8)
+list.get(0)
+list.get(1)
+list.get(2)
