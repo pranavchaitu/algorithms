@@ -2,18 +2,11 @@
  * @param {number[]} nums
  * @return {number}
  */
-var thirdMax = function(nums) {
-    nums.sort((a,b) => b-a);
-
-    let map = {}
-    for(var i of nums){
-        map[i] = 1;
-    }
-    const arr = Object.keys(map)
-    if(arr.length < 3){
-        return arr[arr.length-1]
-    }
-    return arr[arr.length-3]
+function thirdMax(nums) {
+    nums.sort((a,b) => b-a)
+    const unique = Array.from(new Set(nums));
+    if(unique.length < 3) return nums[0]
+    return unique[2]
 };
 
 const ans = thirdMax([2,1])
