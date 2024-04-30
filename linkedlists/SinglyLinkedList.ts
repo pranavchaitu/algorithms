@@ -45,7 +45,7 @@ class SinglyLinkedList<A>{
             this.head = null
             this.tail = null
         }
-        return console.log(current);
+        return console.log(this);
     }
     shift() {
         if(!this.head) {
