@@ -45,7 +45,7 @@ class SinglyLinkedList<A>{
             this.head = null
             this.tail = null
         }
-        return console.log(current);
+        return console.log(this);
     }
     shift() {
         if(!this.head) {
@@ -54,7 +54,7 @@ class SinglyLinkedList<A>{
         var current = this.head
         this.head = current.next
         this.length --
-        return console.log(current);
+        return console.log(this);
     }
     unshift(val : A) {
         var current = new Node(val)
@@ -76,7 +76,7 @@ class SinglyLinkedList<A>{
             current = current!.next
             i++
         }
-        return console.log(current);
+        return console.log(this);
     }
     print() {
         var current = this.head;
