@@ -4,17 +4,13 @@
  */
 var thirdMax = function(nums) {
     nums.sort((a,b) => b-a);
-
-    let map = {}
-    for(var i of nums){
-        map[i] = 1;
+    if(nums.length < 3){
+        return nums[nums.length-1]
     }
-    const arr = Object.keys(map)
-    if(arr.length < 3){
-        return arr[arr.length-1]
-    }
-    return arr[arr.length-3]
+    const uniqueElements = new Set(nums)
+    const pr = Array.from(uniqueElements)
+    return pr[2]
 };
 
-const ans = thirdMax([2,1])
+const ans = thirdMax([1,2])
 console.log(ans);

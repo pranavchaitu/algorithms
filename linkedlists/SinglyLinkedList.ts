@@ -78,12 +78,26 @@ class SinglyLinkedList<A>{
         }
         return console.log(current);
     }
+    print() {
+        var current = this.head;
+        while(current?.val) {
+            console.log(current!.val);
+            if(current.next === null) {
+                break;
+            }
+            current = current!.next;
+        }
+        return;
+    }
 }
 
 const list = new SinglyLinkedList();
 list.push(1)
 list.push(4)
 list.push(8)
+list.push(9)
+list.push(21)
 list.get(0)
 list.get(1)
 list.get(2)
+list.print()
