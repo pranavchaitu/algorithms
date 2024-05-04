@@ -66,18 +66,28 @@ class SinglyLinkedList<A>{
             this.head = current
         }
         this.length ++
-        return console.log(list);
+        return console.log(this);
     }
     get(index : number){
-        if(index < 0 || index > this.length) return console.log(null);
+        if(index < 0 || index > this.length) return null;
         var current = this.head
         var i = 0;
         while(i !== index) {
             current = current!.next
             i++
         }
-        return console.log(this);
+        return current;
     }
+
+    set(index: number, val: A) {
+        const foundNode : Node<A> | null = this.get(index);
+        if (foundNode !== null) {
+            foundNode.val = val;
+            return true;
+        }
+        return false;
+    }
+
     print() {
         var current = this.head;
         while(current?.val) {
