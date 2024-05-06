@@ -28,7 +28,7 @@ class SinglyLinkedList<A>{
         this.length++
         return this 
     }
-    pop() {
+    pop() {        
         if(!this.head){
             return undefined
         }
@@ -92,14 +92,25 @@ class SinglyLinkedList<A>{
 
     insert(val: A, index : number) {
         if(index < 0 || index > this.length) return false
-        if(index === 0) return this.unshift(val)
-        if(index === this.length) return this.push(val)
+        if(index === 0) return !!this.unshift(val)
+        if(index === this.length) return !!this.push(val)
         const newNode = new Node(val)
         const prev = this.get(index-1)
         newNode.next = prev!.next
         prev!.next = newNode
         this.length++
         return true
+    }
+
+    remove(index : number) {
+        if(index < 0 || index >= this.length) return undefined
+        if(index === 0) return this.shift()
+        if(index === this.length-1) return this.pop()
+        const prev = this.get(index-1);
+        const toRemove = prev!.next
+        prev!.next = toRemove!.next
+        this.length--
+        return toRemove
     }
 
     print() {
@@ -121,17 +132,12 @@ list.push(4)
 list.push(8)
 list.push(9)
 list.push(21)
-list.push(21)
+list.push(55)
 list.push(21)
 list.push(21)
 list.print()
+console.log(`-----------------------------------------`);
+list.remove(7)
+list.print()
+console.log(`-----------------------------------------`);
 
-list.insert("xxx",5)
-list.insert("yyy",9)
-list.insert("yyy",0)
-console.log('-------------------------------');
-list.print()
-console.log(list);
-console.log('-------------------------------');
-list.shift();
-console.log(list);
