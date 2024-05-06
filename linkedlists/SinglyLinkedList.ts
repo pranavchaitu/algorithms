@@ -26,11 +26,11 @@ class SinglyLinkedList<A>{
             this.tail = current
         }
         this.length++
-        return console.log(this) 
+        return this 
     }
     pop() {
         if(!this.head){
-            return console.log(undefined);
+            return undefined
         }
         var current = this.head
         var newTail = this.head
@@ -45,16 +45,18 @@ class SinglyLinkedList<A>{
             this.head = null
             this.tail = null
         }
-        return console.log(this);
+        return this
     }
     shift() {
         if(!this.head) {
-            return console.log(undefined);
+            return undefined
         }
-        var current = this.head
-        this.head = current.next
+        // var current = this.head
+        // this.head = current.next
+        //this works too
+        this.head = this.head.next
         this.length --
-        return console.log(this);
+        return this
     }
     unshift(val : A) {
         var current = new Node(val)
@@ -66,7 +68,7 @@ class SinglyLinkedList<A>{
             this.head = current
         }
         this.length ++
-        return console.log(this);
+        return this
     }
     get(index : number){
         if(index < 0 || index > this.length) return null;
@@ -79,13 +81,25 @@ class SinglyLinkedList<A>{
         return current;
     }
 
-    set(index: number, val: A) {
+    set(val: A, index : number) {
         const foundNode : Node<A> | null = this.get(index);
         if (foundNode !== null) {
             foundNode.val = val;
             return true;
         }
         return false;
+    }
+
+    insert(val: A, index : number) {
+        if(index < 0 || index > this.length) return false
+        if(index === 0) return this.unshift(val)
+        if(index === this.length) return this.push(val)
+        const newNode = new Node(val)
+        const prev = this.get(index-1)
+        newNode.next = prev!.next
+        prev!.next = newNode
+        this.length++
+        return true
     }
 
     print() {
@@ -107,7 +121,17 @@ list.push(4)
 list.push(8)
 list.push(9)
 list.push(21)
-list.get(0)
-list.get(1)
-list.get(2)
+list.push(21)
+list.push(21)
+list.push(21)
 list.print()
+
+list.insert("xxx",5)
+list.insert("yyy",9)
+list.insert("yyy",0)
+console.log('-------------------------------');
+list.print()
+console.log(list);
+console.log('-------------------------------');
+list.shift();
+console.log(list);
