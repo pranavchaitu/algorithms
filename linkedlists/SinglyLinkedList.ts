@@ -80,7 +80,7 @@ class SinglyLinkedList<A>{
         }
         return current;
     }
-
+    //replacing a existing value of a node to new val
     set(val: A, index : number) {
         const foundNode : Node<A> | null = this.get(index);
         if (foundNode !== null) {
@@ -113,16 +113,29 @@ class SinglyLinkedList<A>{
         return toRemove
     }
 
+    reverse() {
+        var current = this.head;
+        this.head = this.tail;
+        this.tail = current;
+        var prev = null;
+        var next;
+        while(current){
+            next = current!.next;
+            current!.next = prev;
+            prev = current;
+            current = next
+        }
+        return this
+    }
+
     print() {
         var current = this.head;
-        while(current?.val) {
-            console.log(current!.val);
-            if(current.next === null) {
-                break;
-            }
+        const res = []
+        while(current) {
+            res.push(current!.val);
             current = current!.next;
         }
-        return;
+        console.log(res);
     }
 }
 
@@ -131,13 +144,11 @@ list.push(1)
 list.push(4)
 list.push(8)
 list.push(9)
-list.push(21)
-list.push(55)
-list.push(21)
-list.push(21)
 list.print()
 console.log(`-----------------------------------------`);
-list.remove(7)
-list.print()
-console.log(`-----------------------------------------`);
+list.reverse()
+list.print();
+
+
+
 
