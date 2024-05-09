@@ -8,7 +8,7 @@ export class Node<A> {
 }   
 
 class SinglyLinkedList<A>{
-    head : Node<A> | null
+    head : Node<A> | null 
     tail : Node<A> | null
     length : number
     constructor() {
@@ -34,7 +34,7 @@ class SinglyLinkedList<A>{
         }
         var current = this.head
         var newTail = this.head
-        while(current?.next){
+        while(current.next) {
             newTail = current
             current = current.next
         }
@@ -51,12 +51,15 @@ class SinglyLinkedList<A>{
         if(!this.head) {
             return undefined
         }
-        // var current = this.head
-        // this.head = current.next
+        var current = this.head
+        this.head = current.next
         //this works too
-        this.head = this.head.next
+        // this.head = this.head.next
         this.length --
-        return this
+        if(this.length == 0){
+            this.tail = null
+        }
+        return current
     }
     unshift(val : A) {
         var current = new Node(val)
@@ -117,12 +120,12 @@ class SinglyLinkedList<A>{
         var current = this.head;
         this.head = this.tail;
         this.tail = current;
-        var prev = null;
-        var next;
+        var prev : Node<A> | null = null;
+        var next : Node<A> | null;
         while(current){
             next = current!.next;
             current!.next = prev;
-            prev = current;
+            prev = current
             current = next
         }
         return this
@@ -130,7 +133,7 @@ class SinglyLinkedList<A>{
 
     print() {
         var current = this.head;
-        const res = []
+        const res : A[] = []
         while(current) {
             res.push(current!.val);
             current = current!.next;
