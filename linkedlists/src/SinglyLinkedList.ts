@@ -84,7 +84,7 @@ class SinglyLinkedList<A>{
         return current;
     }
     //replacing a existing value of a node to new val
-    set(val: A, index : number) {
+    set(index : number,val : A) {
         const foundNode : Node<A> | null = this.get(index);
         if (foundNode !== null) {
             foundNode.val = val;
@@ -93,7 +93,7 @@ class SinglyLinkedList<A>{
         return false;
     }
 
-    insert(val: A, index : number) {
+    insert(index : number,val: A) {
         if(index < 0 || index > this.length) return false
         if(index === 0) return !!this.unshift(val)
         if(index === this.length) return !!this.push(val)
@@ -117,40 +117,44 @@ class SinglyLinkedList<A>{
     }
 
     reverse() {
-        var current = this.head;
-        this.head = this.tail;
-        this.tail = current;
-        var prev : Node<A> | null = null;
+        //just a head and tail swap
+        var current = this.head
+        this.head = this.tail
+        this.tail = current
+        var prev : Node<A> | null = null
         var next : Node<A> | null;
-        while(current){
-            next = current!.next;
-            current!.next = prev;
+        while(current) {
+            next = current.next
+            current.next = prev
             prev = current
             current = next
         }
-        return this
+        return this.print()
     }
 
     print() {
-        var current = this.head;
-        const res : A[] = []
+        var res : string = ``
+        var current = this.head
         while(current) {
-            res.push(current!.val);
-            current = current!.next;
+            if(current.next) {
+                res += `${current.val} -> `
+            } else {
+                res += `${current.val}`
+            }
+            current = current.next
         }
         console.log(res);
     }
+
 }
 
 const list = new SinglyLinkedList();
+list.push(0)
 list.push(1)
-list.push(4)
-list.push(8)
-list.push(9)
+list.push(2)
+list.push(3)
 list.print()
-console.log(`-----------------------------------------`);
 list.reverse()
-list.print();
 
 
 
