@@ -127,7 +127,7 @@ class DoublyLinkedList<A> {
         this.length++
         return true
     }
-
+    
     remove(index : number) {
         if(index < 0 || index > this.length) return null
         if(index === 0) return !!this.shift()
