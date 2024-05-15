@@ -14,14 +14,14 @@ function detectCycle(head: ListNode | null): ListNode | null {
     var slow = head
     var fast = head
     while(fast && fast.next){
-        slow = slow.next
+        slow = slow!.next
         fast = fast.next.next
         if(slow === fast) {
             slow = temp
             //from intresection to start
             while(slow !== fast){
-                slow = slow.next
-                fast = fast.next
+                slow = slow!.next
+                fast = fast!.next
             }
             return slow
         }
