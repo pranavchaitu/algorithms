@@ -5,6 +5,8 @@ class Static {
         Human.population += 1;
         System.out.println(Human.population); 
         System.out.println(Human.population); 
+        System.out.println(pranav);
+        System.out.println(chaitu);
         // funn();
     }
 

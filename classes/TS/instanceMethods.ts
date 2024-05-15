@@ -4,7 +4,7 @@ interface studentDetails {
     grade : number
 }
 
-class Student{
+export class Student{
     firstName :string
     lastName :string
     grade :number
