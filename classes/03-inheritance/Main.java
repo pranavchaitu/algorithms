@@ -1,3 +1,5 @@
+import javax.print.DocFlavor.STRING;
+
 /**
  * Main
  */
@@ -22,5 +24,11 @@ public class Main {
         System.out.println(surya.age);
         System.out.println(surya.gender);
         System.out.println(pranav.age);
+    }
+    void fun1(String i) {
+        System.out.println(true);
+    }
+    void fun1(int i){
+        System.out.println(true);
     }
 }

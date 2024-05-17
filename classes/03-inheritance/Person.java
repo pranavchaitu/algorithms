@@ -1,4 +1,4 @@
-public class Person {
+public class Person extends Object{
     int age;
     String gender;
     Person() {
