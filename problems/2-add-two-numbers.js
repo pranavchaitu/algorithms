@@ -11,8 +11,8 @@
  * @return {ListNode}
  */
 var addTwoNumbers = function(l1, l2) {
-    let num1 = 0
-    let num2 = 0
+    let num1 = 1
+    let num2 = 1
     while(l1 && l2){
         num1 = num1*10 + l1.val
         num2 = num2*10 + l2.val
@@ -30,8 +30,9 @@ var addTwoNumbers = function(l1, l2) {
             l2 = l2.next
         }
     }
+    num1 = parseInt(num1.toString().split('').slice(1,num1.length).reverse().join(''))
+    num2 = parseInt(num2.toString().split('').slice(1,num2.length).reverse().join(''))
     var res = num1 + num2;
-    console.log(res)
     var rem
     var dummy = new ListNode()
     var current = dummy
