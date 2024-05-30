@@ -1,3 +1,4 @@
+package exam.classes;
 public class Singleton {
 
     private static Singleton instance;
@@ -16,7 +17,7 @@ public class Singleton {
         }
         return instance;
     }
-
+    
     public static void main(String[] args) {
         //only a single instance been created here
         Singleton obj1 = Singleton.getInstance("pranav", 18);    

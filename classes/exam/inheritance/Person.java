@@ -1,3 +1,4 @@
+package exam.inheritance;
 public class Person extends Object{
     int age;
     String gender;

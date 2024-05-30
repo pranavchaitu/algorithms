@@ -1,9 +1,6 @@
 function fib(n) {
-  if(n == 0){
-    return 0
-  }
-  if(n==1){
-    return 1
+  if(n == 0 || n == 1){
+    return n
   }
   return fib(n-1) + fib(n-2)
 }
@@ -17,7 +14,7 @@ function printFib(n) {
 }
 
 const t1 = performance.now()
-printFib(40)
+printFib(50)
 const t2 = performance.now()
 
 console.log(`it takes ${(t2-t1).toFixed(2)} ms`);

@@ -1,8 +1,8 @@
-import javax.print.DocFlavor.STRING;
-
+package exam.inheritance;
 /**
  * Main
  */
+
 public class Main {
     static class Student extends Person {
         int grade;

@@ -1,3 +1,4 @@
+package exam.classes;
 public class StaticBlock {
     static int a = 10;
     static int b = 2;
@@ -8,10 +9,8 @@ public class StaticBlock {
     }
 
     public static void main(String[] args) {
-        StaticBlock A = new StaticBlock();
         StaticBlock.b += 2;
         System.out.println(StaticBlock.a + " " + StaticBlock.b);
-        StaticBlock B = new StaticBlock();
         System.out.println(StaticBlock.a + " " +StaticBlock.b);
     }
 }

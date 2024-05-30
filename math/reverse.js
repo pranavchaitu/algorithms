@@ -8,4 +8,5 @@ const reverse = (n) => {
 	return rev > Math.pow(2,31) - 1 ? 0 : n < 0 ? -rev : rev;
 }
 
-console.log(reverse(-134)); //should be 431
+console.log(reverse(-134)); //should be -431
+console.log(reverse(192983274));

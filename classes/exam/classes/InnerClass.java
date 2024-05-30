@@ -1,11 +1,13 @@
+package exam.classes;
 public class InnerClass {
     //we should create a class as static as it is depedent on outer class
     //to get rid of it we make it static / independent
-    static class Test {
+    protected static class Test {
         int roll;
         Test(int roll){
             this.roll = roll;
         }
+        @Override
         public String toString() {
             System.out.println(true);
             return "own tostring";
