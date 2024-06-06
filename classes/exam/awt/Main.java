@@ -25,7 +25,7 @@ public class Main {
 
     public void forEach(String str) {
         char[] word = str.toCharArray();
-        for(char i : word) {
+        for (char i : word) {
             System.out.println(i);
         }
     }

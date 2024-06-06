@@ -16,7 +16,7 @@ class Main {
         p.add(country);
         f.add(p);
         f.setVisible(true);
-    }
+    }  
     static void TB() {
         JFrame f = new JFrame("the jframe");
         f.setSize(1000,1000);

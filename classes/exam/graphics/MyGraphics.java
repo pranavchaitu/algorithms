@@ -14,12 +14,12 @@ public class MyGraphics extends Frame{
         this.setVisible(true);
         this.setSize(1000,1000);
         this.setTitle("User Defned Frame Using Graphics");
-        this.setBackground(Color.pink);
+        this.setBackground(Color.GREEN);
     }
     public void paint(Graphics g){
         g.drawString("Welcome to Java Programming", 30, 40);
         g.drawRect(30, 40, 20, 40);
-        g.fillOval(30, 40, 20, 40);
+        g.drawOval(30, 40, 20, 40);
     }
     public static void main(String args[]){
         MyGraphics g = new MyGraphics();

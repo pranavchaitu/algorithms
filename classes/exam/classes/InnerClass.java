@@ -17,6 +17,6 @@ public class InnerClass {
         //inside a static method we must use a static class / methods only
         Test pranav = new Test(1);
         Test chaitu = new Test(2);
-        System.out.println(pranav.roll + chaitu.roll);
+        System.out.println(pranav);
     } 
 }

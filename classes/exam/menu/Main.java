@@ -3,9 +3,8 @@ package exam.menu;
 import java.awt.*;
 
 class Main {
-    static class MenuExample{
+    static class MenuExample extends Frame{
         MenuExample(){
-            Frame f= new Frame("Menu and MenuItem Example");
             MenuBar mb=new MenuBar();
             Menu menu=new Menu("Menu");
             Menu submenu=new Menu("Sub Menu");
@@ -21,10 +20,11 @@ class Main {
             submenu.add(i5);
             menu.add(submenu);
             mb.add(menu);
-            f.setMenuBar(mb);
-            f.setSize(400,400);
-            f.setLayout(null);
-            f.setVisible(true);
+            this.setTitle("hello title");
+            this.setMenuBar(mb);
+            this.setSize(400,400);
+            this.setLayout(null);
+            this.setVisible(true);
         } 
         public static void main(String args[]){
             new MenuExample();

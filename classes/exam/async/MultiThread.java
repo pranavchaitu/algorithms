@@ -31,7 +31,7 @@ class Demo2 extends Thread{
             }
         }
         System.out.println("Character printing completed");
-    }
+    }   
 }
 
 class Demo3 extends Thread {
@@ -56,9 +56,9 @@ class MultiThread{
         Demo1 d1 = new Demo1();
         Demo2 d2 = new Demo2();
         Demo3 d3 = new Demo3();
-        d1.run();
-        d2.run();
-        d3.run();
+        d1.start();
+        d2.start();
+        d3.start();
     }
 }
 

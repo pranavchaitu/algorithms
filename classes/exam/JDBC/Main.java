@@ -34,9 +34,9 @@ public class Main {
             e.printStackTrace();
         }
         finally {
-            //Close Connection
-            // stmt.close();
-            // con.close();
+            // Close Connection
+            stmt.close();
+            con.close();
         }
     }
 }
