@@ -16,3 +16,4 @@ function isValid(s: string): boolean {
 
 console.log(isValid("()[]{}"));
 console.log(isValid("(}"));
+console.log(isValid("(())"));
