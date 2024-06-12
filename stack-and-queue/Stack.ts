@@ -42,7 +42,7 @@ class Stack<A> {
         return console.log(res);
     }
 }
-
+// USING OUR-OWN
 const stack = new Stack()
 console.log('-------------------- pushing --------------------');
 console.log(stack.push(12))
@@ -63,3 +63,23 @@ stack.print()
 console.log(stack.pop())
 console.log(stack);
 
+// USING ARRAY
+const s = new Array()
+console.log('-------------------- pushing --------------------');
+console.log(s.push(12))
+console.log(s.push(13))
+console.log(s.push(14))
+console.log(s.push(15))
+console.log(s.push(16))
+console.log(s);
+console.log('-------------------- popping --------------------');
+console.log(s.pop())
+console.log(s);
+console.log(s.pop())
+console.log(s);
+console.log(s.pop())
+console.log(s.pop())
+console.log(s.pop())
+console.log(s);
+console.log(s.pop())
+console.log(s);
