@@ -9,10 +9,10 @@ class ListNode {
 }
 
 function sortList(head: ListNode | null): ListNode | null {
-    var res = []
+    var res : number[] = []
     var temp1 = head
     while(head) {
-        res.push(head!.val)
+        res.push(head.val)
         head = head.next
     }
     var temp2 = temp1
