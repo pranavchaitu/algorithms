@@ -74,7 +74,7 @@ class SinglyLinkedList<A>{
         return this
     }
     get(index : number){
-        if(index < 0 || index > this.length) return null;
+        if(index < 0 || index >= this.length) return null;
         var current = this.head
         var i = 0;
         while(i !== index) {
