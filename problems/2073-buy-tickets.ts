@@ -1,17 +1,30 @@
+// optimal - O(n)
 function timeRequiredToBuy(tickets: number[], k: number): number {
-    let person = tickets[k]
-    let c = 0
-    for (let i = 0; i < tickets.length; i++) {
-        if (i < k) {
-            c += Math.min(tickets[i], person);
-        } else if (i === k) {
-            c += person;
+    var seconds = 0
+    for(var i=0;i<tickets.length;i++) {
+        if(i <= k) {
+            seconds += Math.min(tickets[i],tickets[k])
         } else {
-            if (tickets[i] < person)
-                c += tickets[i];
-            else
-                c += person - 1;
+            seconds += Math.min(tickets[i],tickets[k] - 1)
         }
     }
-    return c
-};
+    return seconds
+}
+
+// brute-force
+// function timeRequiredToBuy(tickets: number[], k: number): number {
+//     var seconds = 0
+//     while(tickets[k] !== 0) {
+//         for(var i in tickets) {
+//             // its because we just stop at the place if the tickets[k] got all
+//             if(tickets[k] == 0) {
+//                 break
+//             }
+//             if(tickets[i] > 0) {
+//                 tickets[i] -= 1
+//                 seconds += 1
+//             }
+//         }
+//     }   
+//     return seconds
+// };
