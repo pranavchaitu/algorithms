@@ -15,31 +15,47 @@ class BinarySearchTree<A> {
         this.root = null
     }
 
-    insert(val : A) {
+    insert(val : A) : BinarySearchTree<A> | undefined {
         const newNode = new Node(val)
         if(!this.root) {
             this.root = newNode
-            return newNode.val
+            return this
         }
         var current : Node<A> | null = this.root
-        while(current) {
+        while(true) {
             if(val < current.val) {
                 if(current.left) {
                     current = current.left
                 } else {
                     current.left = newNode
-                    return newNode.val
+                    return this
                 }
-            } else {            
+            } else if(val > current.val){            
                 if(current.right) {
                     current = current.right
                 } else {
                     current.right = newNode
-                    return newNode.val
+                    return this
                 }
+            } else {
+                return undefined
             }
         }
     } 
+
+    find(val : A) {
+        var current : Node<A> | null = this.root
+        while(current) {
+            if(val < current.val) {
+                current = current.left
+            } else if(val > current.val) {
+                current = current.right
+            } else {
+                return true
+            }
+        }
+        return null
+    }
 }
 
 // insert : 42 
@@ -55,3 +71,8 @@ bst.insert(40)
 bst.insert(33)
 
 console.log(bst);
+
+console.log(`--------------------`);
+console.log(bst.find(30));
+console.log(bst.find(40));
+console.log(bst.find(41));
