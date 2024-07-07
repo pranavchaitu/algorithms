@@ -43,7 +43,21 @@ class BinarySearchTree<A> {
         }
     } 
 
-    find(val : A) {
+    find(val : A) : Node<A> | undefined {
+        var current : Node<A> | null = this.root
+        while(current) {
+            if(val < current.val) {
+                current = current.left
+            } else if(val > current.val) {
+                current = current.right
+            } else {
+                return current
+            }
+        }
+        return undefined
+    }
+
+    contains(val : A) : boolean {
         var current : Node<A> | null = this.root
         while(current) {
             if(val < current.val) {
@@ -54,7 +68,7 @@ class BinarySearchTree<A> {
                 return true
             }
         }
-        return null
+        return false
     }
 }
 
@@ -76,3 +90,5 @@ console.log(`--------------------`);
 console.log(bst.find(30));
 console.log(bst.find(40));
 console.log(bst.find(41));
+console.log(bst.contains(40));
+console.log(bst.contains(42));
