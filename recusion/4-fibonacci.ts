@@ -10,4 +10,4 @@ function fib(n : number) : number {
 
 for(var i=0;i<20;i++) {
     console.log(fib(i));
-}
+}   
