@@ -70,6 +70,39 @@ class BinarySearchTree<A> {
         }
         return false
     }
+
+    BFS() : A[] {
+        const res : A[] = []
+        const queue = [this.root]
+        var popped : Node<A>
+        while(queue.length) {
+            popped = queue.pop()!    
+            res.push(popped!.val)
+            if(popped?.left) {
+                queue.unshift(popped.left)
+            } 
+            if(popped?.right) {
+                queue.unshift(popped.right)
+            } 
+        }
+        return res
+    }
+
+    DFSPreOrder() : A[] {
+        if(!this.root) return []
+        const res : A[] = []
+        function helper(node : Node<A>) : void {
+            res.push(node.val)
+            if(node.left) {
+                helper(node.left)
+            }      
+            if(node.right) {
+                helper(node.right)
+            }
+        }
+        helper(this.root)
+        return res
+    }
 }
 
 // insert : 42 
@@ -83,12 +116,14 @@ bst.insert(30)
 bst.insert(20)
 bst.insert(40)
 bst.insert(33)
+bst.insert(45)
+bst.insert(12)
 
-console.log(bst);
+console.log(bst.DFSPreOrder());
 
-console.log(`--------------------`);
-console.log(bst.find(30));
-console.log(bst.find(40));
-console.log(bst.find(41));
-console.log(bst.contains(40));
-console.log(bst.contains(42));
+// console.log(`--------------------`);
+// console.log(bst.find(30));
+// console.log(bst.find(40));
+// console.log(bst.find(41));
+// console.log(bst.contains(40));
+// console.log(bst.contains(42));
