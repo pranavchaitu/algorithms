@@ -10,7 +10,7 @@ class TreeNode {
     }
 }
 
-
+// recursively
 function maxDepth(root: TreeNode | null): number {
     if(!root) {
         return 0
@@ -18,6 +18,8 @@ function maxDepth(root: TreeNode | null): number {
     return 1 + Math.max(maxDepth(root.left),maxDepth(root.right))
 };
 
+
+// iteratively
 // function maxDepth(root: TreeNode | null): number {
 //     if(!root) {
 //         return 0
@@ -25,8 +27,10 @@ function maxDepth(root: TreeNode | null): number {
 //     const queue = [root]
 //     var popped : TreeNode;
 //     var depth = 0
+//     var len : number
 //     while(queue.length) {
-//         for(var i of queue) {
+//         len = queue.length
+//         for(var i=0;i<len;i++) {
 //             popped = queue.pop()
 //             if(popped.left) {
 //                 queue.unshift(popped.left)
