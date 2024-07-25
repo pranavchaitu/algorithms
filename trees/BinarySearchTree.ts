@@ -103,6 +103,42 @@ class BinarySearchTree<A> {
         helper(this.root)
         return res
     }
+
+    DFSPostOrder() : A[] {
+        if(!this.root) {
+            return []
+        }
+        const res : A[] = []
+        function helper(node : Node<A>) {
+            if(node.left) {
+                helper(node.left)
+            }
+            if(node.right) {
+                helper(node.right)
+            }
+            res.push(node.val)
+        }
+        helper(this.root)
+        return res
+    }
+    
+    DFSInOrder() : A[] {
+        if(!this.root) {
+            return []
+        }
+        const res : A[] = []
+        function helper(node : Node<A>) {
+            if(node.left) {
+                helper(node.left)
+            }
+            res.push(node.val)
+            if(node.right) {
+                helper(node.right)
+            }
+        }
+        helper(this.root)
+        return res
+    }
 }
 
 // insert : 42 
@@ -111,7 +147,7 @@ class BinarySearchTree<A> {
 //      20      40
 //   12       33  45   
 
-const bst = new BinarySearchTree()
+const bst = new BinarySearchTree<number>()
 bst.insert(30)
 bst.insert(20)
 bst.insert(40)
@@ -119,7 +155,9 @@ bst.insert(33)
 bst.insert(45)
 bst.insert(12)
 
-console.log(bst.DFSPreOrder());
+console.log(`PreOrder : ` +  bst.DFSPreOrder());
+console.log(`PostOrder : ` + bst.DFSPostOrder());
+console.log(`InOrder : ` + bst.DFSInOrder());
 
 // console.log(`--------------------`);
 // console.log(bst.find(30));
