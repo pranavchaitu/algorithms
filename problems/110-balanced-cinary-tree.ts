@@ -1,6 +1,6 @@
 // Definition for a binary tree node.
 class TreeNode {
-    val: number
+    val: number 
     left: TreeNode | null
     right: TreeNode | null
     constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
