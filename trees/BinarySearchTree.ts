@@ -56,7 +56,27 @@ class BinarySearchTree<A> {
         }
         return undefined
     }
-
+    deleteNode(root: Node<A> | null, key: A): Node<A> | null {
+        if(!root) return root;
+        if(key < root.val) {
+            root.left = this.deleteNode(root.left,key)
+        } else if(key > root.val) {
+            root.right = this.deleteNode(root.right,key)
+        } else {
+            if(!root.left) {
+                return root.right
+            } else if(!root.right) {
+                return root.left
+            }
+            var cur = root.right;
+            while(cur.left) {
+                cur = cur.left
+            }
+            root.val = cur.val
+            root.right = this.deleteNode(root.right,cur.val)
+        }
+        return root
+    }
     contains(val : A) : boolean {
         var current : Node<A> | null = this.root
         while(current) {
