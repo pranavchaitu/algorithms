@@ -78,6 +78,8 @@ class PriorityQueue<A> {
 
     print() {
         console.log(this.values);
+        // console.log(this.values.map(e => e.val));
+        // console.log(this.values.map(e => e.priority));
     }
 }
 
