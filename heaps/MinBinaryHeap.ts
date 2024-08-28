@@ -1,64 +1,67 @@
-export class MaxBinaryHeap{
-    values :  number[]
-    constructor(values? : number[]) {
-        this.values = values || []
+export class MinBinaryHeap {
+    values : number[]
+    constructor() {
+        this.values = []
     }
+
     insert(val : number) {
         this.values.push(val)
         this.bubbleUp()
         return this.values
     }
+
     bubbleUp() {
-        var cur = this.values.length - 1;
+        var cur = this.values.length - 1
         var element = this.values[cur]
-        while(cur > 0) {
+        while(cur) {
             const parentIndex = Math.floor((cur - 1) / 2)
             const parent = this.values[parentIndex]
-            if(parent >= element) {
+            if(parent <= element) {
                 break;
-            } 
+            }
             this.values[parentIndex] = element
             this.values[cur] = parent
             cur = parentIndex
         }
     }
 
-    extractMax() {
-        const max = this.values[0]
-        const popped = this.values.pop()
+    extractMin() {
+        const min = this.values[0]
+        const last = this.values.pop()
         if(this.values.length > 0) {
-            this.values[0] = popped!
+            this.values[0] = last!
             this.bubbleDown()
-        }
-        return max
+        } 
+        return min
     }
 
     bubbleDown() {
-        var cur = 0;
+        var cur = 0
         var element = this.values[cur]
         const length = this.values.length
-        while(true) {
-            var swap : number | null = null
+        while(1) {
+            var left : number,right : number;
+            var swap : number | null = null;
             const leftIndex = cur * 2 + 1
             const rightIndex = cur * 2 + 2
-            var left : number
-            var right : number
             if(leftIndex < length) {
                 left = this.values[leftIndex]
-                if(left > element) {
+                if(left < element) {
                     swap = leftIndex
                 }
-            }
+            } 
             if(rightIndex < length) {
                 right = this.values[rightIndex]
                 if(
-                    (swap == null && right > element) ||
-                    (swap != null && right > left!)
+                    (!swap && right < element) || 
+                    (swap && right < left!)
                 ) {
                     swap = rightIndex
-                }
+                }   
             }
-            if(!swap) break
+            if(!swap) {
+                break
+            }
             this.values[cur] = this.values[swap]
             this.values[swap] = element
             cur = swap
@@ -66,20 +69,21 @@ export class MaxBinaryHeap{
     }
 }
 
-// const heap = new MaxBinaryHeap()
-// heap.insert(1)
-// heap.insert(4)
-// heap.insert(5)
-// heap.insert(2)
-// heap.print()
-// heap.extractMax()
-// heap.print()
+// const min = new MinBinaryHeap()
 
-// heap.extractMax()
-// heap.print()
-// heap.extractMax()
-// heap.print()
-// heap.extractMax()
-// heap.print()
-// heap.extractMax()
-// heap.print()
+// min.insert(5)
+// min.insert(2)
+// min.insert(3)
+// min.insert(1)
+// min.insert(6)
+
+// console.log(`---------------------`);
+
+// min.extractMin()
+// min.extractMin()
+// min.extractMin()
+// min.print()
+// min.insert(1)
+// console.log(`final : ` + min.values[0]);
+
+
