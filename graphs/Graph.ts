@@ -27,7 +27,6 @@ class Graph<A> {
         
         delete this.adjacencyList[vertex]
     }
-
 }
 
 const graph = new Graph()
