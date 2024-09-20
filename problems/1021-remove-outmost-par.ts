@@ -1,12 +1,16 @@
 function removeOuterParentheses(s: string): string {
-    const stack = new Array(s.length)
-    
+    let res : string = ""
+    const stack : string[] = []
     for(var i of s) {
-        if(stack[stack.length-1] == )
-        stack.push(i)
+        if(i === "(") {
+            if(stack.length) res += i
+            stack.push(i)
+        } else {
+            stack.pop()
+            if(stack.length) res += i
+        }
     }
-    
-    return ""
+    return res
 };
 
 const ans = removeOuterParentheses("(()())(())")
