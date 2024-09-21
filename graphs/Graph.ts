@@ -23,9 +23,31 @@ class Graph<A> {
         
         this.adjacencyList[vertex].forEach((i) => {
             this.removeEdge(i,vertex)
-        })
-        
+        })  
         delete this.adjacencyList[vertex]
+    }
+
+    dfs(vertex : any) {
+        const res : any = []
+        const visited : Record<string,boolean> = {}
+        const list = this.adjacencyList
+        function helper(vertex : any) {
+            // not actually needed?
+            if(!vertex || !list[vertex].length) {
+                return;
+            }
+            res.push(vertex)
+            visited[vertex] = true
+            
+            list[vertex].forEach((i : any) => {
+                //if i is not visited
+                if(!visited[i]) {
+                   helper(i)
+                }
+            })
+        }
+        helper(vertex)
+        return res
     }
 }
 
@@ -41,8 +63,10 @@ graph.addEdge("Tokyo","India")
 graph.addEdge("Tokyo","USA")
 graph.addEdge("India","USA")
 
-console.log(graph);
+console.log(graph.dfs('India'));
 
 graph.removeVertex("Tokyo")
 
-console.log("After removing Tokyo from our map :",graph);
+console.log("After removing Tokyo from our map :",graph.dfs('India'));
+
+// console.log(graph.dfs())
