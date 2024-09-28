@@ -27,13 +27,13 @@ class Graph<A> {
         delete this.adjacencyList[vertex]
     }
 
-    dfs(vertex : any) {
+    dfsRecursive(vertex : any) {
         const res : any = []
         const visited : Record<string,boolean> = {}
         const list = this.adjacencyList
         function helper(vertex : any) {
             // not actually needed?
-            if(!vertex || !list[vertex].length) {
+            if(!vertex) {
                 return;
             }
             res.push(vertex)
@@ -49,24 +49,71 @@ class Graph<A> {
         helper(vertex)
         return res
     }
+    
+    dfsIterative(vertex : any) {
+        const res : any = []
+        const stack = [vertex]
+        const visited : Record<string,boolean> = {}
+        let popped : undefined | any;
+        visited[vertex] = true
+        while(stack.length) {
+            popped = stack.pop()
+            res.push(popped)
+            this.adjacencyList[popped].forEach((v : any) => {
+                if(!visited[v]) {
+                    visited[v] = true
+                    stack.push(v)
+                }
+            })
+        }
+        return res
+    }
+    
+    bfs(vertex : any) {
+        const res : any= []
+        const visited : Record<string,boolean> = {}
+        const queue : any = [vertex]
+        let popped : undefined | any;
+        visited[vertex] = true
+        while(queue.length) {
+            popped = queue.shift()
+            res.push(popped)
+            this.adjacencyList[popped].forEach((v : any)=> {
+                if(!visited[v]) {
+                    visited[v] = true
+                    queue.push(v)
+                }
+            })
+        }
+        return res
+    }
 }
 
-const graph = new Graph()
+let g = new Graph();
 
-graph.addVertex("Tokyo")
-graph.addVertex("India")
-graph.addVertex("USA")
+g.addVertex("A")
+g.addVertex("B")
+g.addVertex("C")
+g.addVertex("D")
+g.addVertex("E")
+g.addVertex("F")
 
-console.log(graph);
 
-graph.addEdge("Tokyo","India")
-graph.addEdge("Tokyo","USA")
-graph.addEdge("India","USA")
+g.addEdge("A", "B")
+g.addEdge("A", "C")
+g.addEdge("B","D")
+g.addEdge("C","E")
+g.addEdge("D","E")
+g.addEdge("D","F")
+g.addEdge("E","F")
 
-console.log(graph.dfs('India'));
+// console.log(g.dfsRecursive("A"))
+console.log(g.bfs("A"))
 
-graph.removeVertex("Tokyo")
-
-console.log("After removing Tokyo from our map :",graph.dfs('India'));
-
-// console.log(graph.dfs())
+//          A
+//        /   \
+//       B     C
+//       |     |
+//       D --- E
+//        \   /
+//          F
