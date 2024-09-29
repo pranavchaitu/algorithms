@@ -1,4 +1,4 @@
-//wimdows sum should be less the k
+//window sum should be less the k
 
 function maxWindow(arr,k){
     let l = 0;
