@@ -2,6 +2,7 @@
 function countBits(n: number): number[] {
     const res = []
     for(var i=0;i<=n;i++) {
+        //@ts-ignore
         res.push(findOnes(i))
     }
     return res
