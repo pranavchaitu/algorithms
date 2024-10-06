@@ -17,13 +17,12 @@ class WeightedGraph {
             this.adjacencyList[vertex2].push({ node : vertex1, weight})
     }
 
-    Dijkstras(start : string, end : string) {
+    Dijkstras(start : string, finish : string) {
         const nodes = new PriorityQueue()
         const distances : Record<string,number> = {}
         const previous : Record<string,string | null> = {}
-        const visited = {}
-        let currentDistance : any;
         let popped : any;
+        const path : Array<any> = []
         for(let vertex in this.adjacencyList) {
             if(vertex === start) {
                 distances[vertex] = 0
@@ -32,29 +31,50 @@ class WeightedGraph {
             }
             nodes.enqueue(vertex,distances[vertex])
             previous[vertex] = null
-        }
+        };
         while(nodes.values.length) {
-            popped = nodes.dequeue()!.val
-            if(popped == end) {
-
+            popped = nodes.dequeue()?.val
+            if(popped == finish) {
+                while(previous[popped]) {
+                    path.push(popped)
+                    popped = previous[popped]
+                }
+                break;
             }
-            if(popped || distances[popped] != Infinity) {
-                this.adjacencyList[popped].forEach((i) => {
-                    
-                })~
-            }
+            // if(popped || distances[popped] !== Infinity) {
+                for(let neighbor of this.adjacencyList[popped]) {
+                    // let nextNode = this.adjacencyList[popped][neighbor] 
+                    let nextNode = neighbor.node
+                    let newSum = distances[popped] + neighbor.weight
+                    if(newSum < distances[nextNode]) {
+                        distances[nextNode] = newSum
+                        previous[nextNode] = popped
+                        nodes.enqueue(nextNode,newSum)
+                    }
+                }         
+            // }
         }
-        // console.log(nodes.values)
-        // console.log(distances)
+        return path.concat(start).reverse()
     }
 }
 
-const graph = new WeightedGraph()
-graph.addVertex("A")
-graph.addVertex("B")
-graph.addVertex("C")
-graph.addEdge('A','B',8)
-graph.addEdge('A','C',7)
-graph.addEdge('C','B',6)
+var graph = new WeightedGraph()
+graph.addVertex("A");
+graph.addVertex("B");
+graph.addVertex("C");
+graph.addVertex("D");
+graph.addVertex("E");
+graph.addVertex("F");
 
-console.log(graph.Dijkstras('A','C'));
+graph.addEdge("A","B", 4);
+graph.addEdge("A","C", 2);
+graph.addEdge("B","E", 3);
+graph.addEdge("C","D", 2);
+graph.addEdge("C","F", 4);
+graph.addEdge("D","E", 3);
+graph.addEdge("D","F", 1);
+graph.addEdge("E","F", 1);
+
+
+const res = graph.Dijkstras("A", "E");
+console.log(res);
