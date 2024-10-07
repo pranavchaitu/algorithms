@@ -41,18 +41,15 @@ class WeightedGraph {
                 }
                 break;
             }
-            // if(popped || distances[popped] !== Infinity) {
-                for(let neighbor of this.adjacencyList[popped]) {
-                    // let nextNode = this.adjacencyList[popped][neighbor] 
-                    let nextNode = neighbor.node
-                    let newSum = distances[popped] + neighbor.weight
-                    if(newSum < distances[nextNode]) {
-                        distances[nextNode] = newSum
-                        previous[nextNode] = popped
-                        nodes.enqueue(nextNode,newSum)
-                    }
-                }         
-            // }
+            this.adjacencyList[popped].forEach(neighbor => {
+                let nextNode = neighbor.node
+                let newSum = distances[popped] + neighbor.weight
+                if(newSum < distances[nextNode]) {
+                    distances[nextNode] = newSum
+                    previous[nextNode] = popped
+                    nodes.enqueue(nextNode,newSum)
+                }
+            })
         }
         return path.concat(start).reverse()
     }
