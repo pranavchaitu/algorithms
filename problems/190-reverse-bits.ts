@@ -1,11 +1,9 @@
+//brute force
 function reverseBits(n: number): number {
-	// const res = n.toString().split('')
-    // console.log(res)
-    const res = parseInt(n.toString(),2)
-    console.log(res);
-    return 1
+    let bin = n.toString(2).padStart(32,'0')
+    return parseInt(bin.split('').reverse().join(''),2)
 };
 
-reverseBits(10111111111111111111111111111111)
-// console.log(res);
+const res = reverseBits(43261596)
+console.log(res);
 
