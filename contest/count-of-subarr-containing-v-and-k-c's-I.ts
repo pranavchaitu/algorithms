@@ -20,5 +20,5 @@ function countOfSubstrings(word: string, k: number): number {
     return count
 };
 
-const res = countOfSubstrings("ieaouqqieaouqq",1)
-console.log(res);
+const ans = countOfSubstrings("ieaouqqieaouqq",1)
+console.log(ans);
