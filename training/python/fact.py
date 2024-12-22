@@ -11,7 +11,7 @@ def factorg(n):
         return n
     return factorg(n-1) + factorg(n-2)
 
-ans = fact(900)
+ans = fact(100)
 print(ans)
 
 # ans = factorg(40)
