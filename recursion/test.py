@@ -1,77 +1,44 @@
-def printName5Times(name,count):    
-    if count == 0:
+# Printing name i times
+def printname(i,name):
+    if i == 0:
         return
-    # we can use this to reverse/ backtrack call
-    return print(name) or printName5Times(name,count-1)
+    print(name)
+    printname(i-1,name)
+# printname(5,'pranav')
 
+# recursion
 
-# parametirezed
-def sumOfNIntegersParametirezed(num,sum):
-    if num < 1:
-        print(sum)
+# 1-N
+def printAscendingRecursive(i,n):
+    if i > n:
         return
-    return sumOfNIntegersParametirezed(num-1,sum+num)
+    print(i)
+    printAscendingRecursive(i+1,n)
+# printAscendingRecursive(1,5)
 
-# functional
-def sumOfNIntegersFunctional(num):
-    if num < 1:
-        return num
-    return num + sumOfNIntegersFunctional(num-1)
-
-def fact(num):
-    if num == 1:
-        return 1
-    return num * fact(num-1)
-
-# need refactor
-def reverseArr(arr):
-    def helper(l,r):
-        if l == r:
-            return
-        arr[l],arr[r] = arr[r],arr[l]
-        helper(l+1,r-1)
-    helper(0,len(arr)-1)
-    return arr
-# parametertized
-def reverseArrWithParams(i,arr,n):
-    if i >= n // 2:
-        # for size 5 just until 0,1 and not even simillarly for size 6 -> 0,1,2 enough 
-        return arr
-    arr[i],arr[n-1-i] = arr[n-1-i],arr[i]
-    return reverseArrWithParams(i+1,arr,n)
+# N-1
+def printDescendingRecursive(n):
+    if n == 0:
+        return
+    print(n)
+    printDescendingRecursive(n-1)
+# printDescendingRecursive(5)
 
 
-def palindrome(s):
-    def helper(l,r):
-        if l >= r:
-            return True
-        if s[l] != s[r]:
-            return False
-        return helper(l+1,r-1)
-    return helper(0,len(s)-1)   
-# parametirized
-def justCheckPalindrome(i,s):
-    n = len(s)
-    if i >= n // 2:
-        return True
-    if s[i] != s[n-i-1]:
-        return False
-    return justCheckPalindrome(i+1,s)
+# backtracking
 
-def fib(n):
-    if n <= 1:
-        return n
-    return fib(n-1) + fib(n-2)
+# 1-N
+def printAscendingBacktrack(n):
+    if n < 1:
+        return
+    printAscendingBacktrack(n-1)
+    print(n)
+# printAscendingBacktrack(5)
 
-if __name__ == "__main__":
-    # printName5Times('pranav',5)
-    # sumOfNIntegersParametirezed(5,0) # 5 + 4 + 3 + 2 + 1 = 15
-    # print(sumOfNIntegersFunctional(6))
-    # print(fact(3))
-    # print(reverseArr([1,3,24,43,4]))
-    # print(reverseArrWithParams(0,[1,3,24,43,4],5))
-    # print(palindrome('sassas'))
-    # print(justCheckPalindrome(0,'sassaas'))
-    print(fib(4)) # 0 1 1 2 3 5
-    
-    
+# N-1
+def printDescendingBacktrack(i,n):
+    if i > n:
+        return
+    printDescendingBacktrack(i+1,n)
+    print(i)
+printDescendingBacktrack(1,5)
