@@ -95,3 +95,20 @@ def sumEqualsKCount(arr, target):
 
 # res = sumEqualsKCount([1,2,1],2)
 # print(res)
+
+
+# practise
+# def fn(s):
+#     res = []
+#     n = len(s)
+#     def helper(cur,i):    
+#         if i == n:
+#             res.append(cur)
+#             return
+#         helper(cur+s[i],i+1)
+#         helper(cur,i+1)
+#     helper('',0)
+#     return res
+
+# res = fn('abc')
+# print(res)

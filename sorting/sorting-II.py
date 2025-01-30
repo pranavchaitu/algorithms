@@ -9,8 +9,8 @@ def findPartition(low,high,arr):
             left += 1
         while arr[right] > arr[pivot] and right > low:
             right -= 1
-        if left < right:
-            arr[left],arr[right] = arr[right],arr[left]
+        if left >= right: break
+        arr[left],arr[right] = arr[right],arr[left]
     arr[right],arr[pivot] = arr[pivot],arr[right]
     return right 
 
@@ -25,3 +25,6 @@ def quickSort(arr,low,high):
 arr = [1,4,3,2]
 quickSort(arr,0,len(arr)-1)
 print(arr)
+
+
+# def merge_sort
